@@ -1,5 +1,5 @@
 # Lost & Found NITS
-"A dynamic web-based Lost and Found management system designed to streamline item recovery for NIT Silchar campus."
+Lost & Found Portal for NIT Silchar is a web-based platform designed to help students and staff report, search, and recover lost belongings within the campus. Users can post details of lost or found items, including description, location, date, and contact information. The website provides an organized and user-friendly interface to connect the rightful owner with the finder, making the recovery process faster, easier, and more efficient within the NIT Silchar community.
 
 ## 🛠️ Tech Stack
 * **Frontend:** HTML5, Tailwind CSS
