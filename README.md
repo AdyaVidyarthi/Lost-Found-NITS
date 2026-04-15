@@ -6,7 +6,4 @@ Lost & Found Portal for NIT Silchar is a web-based platform designed to help stu
 * **Logic:** JavaScript (DOM Manipulation)
 * **Version Control:** Git & GitHub
 
-## 🚀 Upcoming Features (In Progress)
-- [ ] **LocalStorage:** To keep data saved after page refresh.
-- [ ] **Image Preview:** To display uploaded product photos.
 
