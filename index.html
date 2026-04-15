@@ -78,6 +78,19 @@
     </div>
     </div>
       <div id="statusPage" class="hidden w-full max-w-6xl mx-auto px-4">
+        <div class="max-w-6xl mx-auto mb-8 px-4 flex flex-col md:flex-row gap-4">
+    <input type="text" id="searchInput" onkeyup="filterItems()" placeholder="Search items or locations..." 
+           class="flex-1 p-3 border rounded-xl shadow-sm focus:ring-2 focus:ring-blue-500">
+    
+    <select id="filterCategory" onchange="filterItems()" class="p-3 border rounded-xl shadow-sm bg-white">
+        <option value="all">All Categories</option>
+        <option value="Electronics">Electronics</option>
+         <option value="keys">Keys</option>
+          <option value="wallet/bag">Wallet/bags</option>
+        <option value="Documents">Documents/ID Cards</option>
+        <option value="genralproducts">General Products</option>
+    </select>
+</div>
         <h2 class="text-2xl font-bold text-center text-gray-800 mb-8">Campus Status Board</h2>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -153,11 +166,57 @@
             };
 
             items.push(newItem);
-            alert("Report submitted successfully!");
+          
+    const isMatch = items.some(existingItem => {
+
+        const oppositeType = existingItem.type !== newItem.type;
+        
+      
+        const titleMatch = existingItem.title.toLowerCase().includes(newItem.title.toLowerCase()) || 
+                           newItem.title.toLowerCase().includes(existingItem.title.toLowerCase());
+        
+       
+        const locationMatch = existingItem.location.toLowerCase() === newItem.location.toLowerCase();
+
+        return oppositeType && (titleMatch || locationMatch);
+    });
+
+    if (isMatch) {
+        alert("🔍 SMART MATCH FOUND!\nSomeone has already reported a similar item. Check the Status Board!");
+    }
+    
+         alert("Report submitted successfully!");
             itemForm.reset();
             showPage('status'); 
-        });
 
+        });
+         
+        function filterItems() {
+    const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+    const categoryTerm = document.getElementById('filterCategory').value;
+
+    
+    const allCards = document.querySelectorAll('#lostList > div, #foundList > div');
+
+    allCards.forEach(card => {
+        
+        const cardText = card.innerText.toLowerCase();
+        
+
+        const matchesSearch = cardText.includes(searchTerm);
+        
+        
+        const categoryTag = card.querySelector('span').innerText;
+        const matchesCategory = categoryTerm === 'all' || categoryTag === categoryTerm.toUpperCase();
+
+        
+        if (matchesSearch && matchesCategory) {
+            card.style.display = "block";
+        } else {
+            card.style.display = "none";
+        }
+    });
+}
 
     
         function renderItems() {
