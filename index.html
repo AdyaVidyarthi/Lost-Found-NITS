@@ -177,14 +177,14 @@
             items.forEach(item => {
                 const cardColor = item.type === 'lost' ? 'border-red-500' : 'border-green-500';
                 
-                // Image Logic
+                
                 const imageContent = item.image ? `
                     <div class="relative w-full h-48 mt-3 rounded-lg overflow-hidden bg-gray-200">
                         <img src="${item.image}" class="w-full h-full object-cover ${item.isVerified ? '' : 'blur-xl opacity-40'}">
                         ${!item.isVerified ? '<div class="absolute inset-0 flex items-center justify-center"><span class="bg-white/90 text-[10px] font-bold px-3 py-1 rounded-full shadow-sm">HIDDEN</span></div>' : ''}
                     </div>` : '';
 
-                // Contact & Secret Description Logic
+                
                 const secretContent = item.isVerified 
                     ? `<div class="bg-green-50 p-3 rounded-md mt-3 border border-green-200">
                          <p class="text-[11px] text-green-700 font-bold uppercase">✅ Verified Details:</p>
@@ -221,7 +221,7 @@
             
             if (userAttempt) {
                 const item = items.find(i => i.id === itemId);
-                // Case-insensitive match check
+                
                 if (userAttempt.trim().toLowerCase() === item.description.toLowerCase()) {
                     item.isVerified = true;
                     alert("✅ MATCH FOUND! Verification successful. Contact and full details are now visible.");
